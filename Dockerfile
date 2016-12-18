@@ -9,12 +9,13 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 ENV WIKKAWIKI_VERSION 1.3.7
 ENV MD5_CHECKSUM 9e3ae79d96bf0581c01e1dc706698576
 
+ADD http://wikkawiki.org/downloads/Wikka-$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/$WIKKAWIKI_VERSION.tar.gz
+
 RUN mkdir -p /var/www/html/wikka \
     && cd /var/www/html/wikka \
-    && curl -O "http://wikkawiki.org/downloads/Wikka-$WIKKAWIKI_VERSION.tar.gz" \
-    && echo "$MD5_CHECKSUM  Wikka-$WIKKAWIKI_VERSION.tar.gz" | md5sum -c - \
-    && tar xzf "Wikka-$WIKKAWIKI_VERSION.tar.gz" --strip 1 \
-    && rm "Wikka-$WIKKAWIKI_VERSION.tar.gz"
+    && echo "$MD5_CHECKSUM  $WIKKAWIKI_VERSION.tar.gz" | md5sum -c - \
+    && tar xzf "$WIKKAWIKI_VERSION.tar.gz" --strip 1 \
+    && rm "$WIKKAWIKI_VERSION.tar.gz"
 
 ADD wikka.conf /etc/apache2/sites-available/wikka.conf
 ADD mysql_wikkawiki.sql /root/mysql_wikkawiki.sql
@@ -28,6 +29,8 @@ RUN chown -R www-data:www-data /var/www \
 
 RUN service mysql start & \
     sleep 10s  \
-    && mysql -u root < /root/mysql_wikkawiki.sql
+    && mysql -u root < /root/mysql_wikkawiki.sql \
+    && service mysql start && sleep 10 \
+    && tar -cvf /mysql_basic.tar /var/lib/mysql
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]

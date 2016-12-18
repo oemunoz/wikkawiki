@@ -53,6 +53,27 @@ If you use a external database you dont need the mysql volume.
 ~~~~bash
 docker run -d -p 80:80 -v $PWD/wikka.config.php:/var/www/html/wikka.config.php oems/wikkawiki
 ~~~~
+
+#### How to get de default an clean database from this docker.
+
+You can to extract the default database if you want to use this image into some docker-compose for example:
+
+~~~~bash
+docker run --rm -it -v $PWD/mysql_org:/var/lib/mysql oems/wikkawiki sh -c "tar -xvf /mysql_basic.tar"
+~~~~
+
+Now in your work directory, is a directory named **mysql_org/ **, you can use this database files on your owns instances of wikkawiki.
+
+For example docker-compose:
+
+~~~~yaml
+services:
+  db:
+   image: mariadb
+   volumes:
+     - $PWD/mysql_org:/var/lib/mysql
+~~~~
+
 ### Using your own uploads and your plugins also:
 
 ~~~~bash
