@@ -1,3 +1,8 @@
+# Supported tags and respective `Dockerfile` links
+
+-	[`latest`, `1.3.7` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
+-	[`php 7.0.8 ,mysql 5.7.16 pre-release`, `1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre/Dockerfile)
+
 # WikkaWiki docker container
 ![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikka_logo.jpg)
 
