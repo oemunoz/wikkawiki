@@ -13,9 +13,9 @@ docker run -d -p 80:80 oems/wikkawiki
 ~~~~
 
 - Run out of the box, to install WikkaWikki page.
-- Run the latest Version of WikkaWiki (1.3.7), from the website tar.gz.
-- Run with PHP 5 (Developer tested).
-- A new WikkaWiki database over MySql 5.5 (tested), with the next DB/user/password options.
+- Run the preview Version of WikkaWiki (1.4.0), from the website tar.gz.
+- Run with PHP 7!!! (Testing).
+- A new WikkaWiki database over MySql 5.7.16 (testing), with the next DB/user/password options.
 
 The default database:
 ~~~~text

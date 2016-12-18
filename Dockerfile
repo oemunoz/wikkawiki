@@ -1,15 +1,15 @@
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 MAINTAINER OEMS <oscaremu@gmaiil.com>
 
 RUN apt-get update && \
-    apt-get install -y curl supervisor git php5 php5-mysql php5-gd libapache2-mod-php5 php5-curl libssh2-php apache2 mysql-server
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl supervisor git php7.0 php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2 mysql-server
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+#RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-ENV WIKKAWIKI_VERSION 1.3.7
-ENV MD5_CHECKSUM 9e3ae79d96bf0581c01e1dc706698576
+ENV WIKKAWIKI_VERSION "1.4.0-pre"
+ENV MD5_CHECKSUM b2348ab73f2f486af1374d2fa1f7393c
 
-ADD http://wikkawiki.org/downloads/Wikka-$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/$WIKKAWIKI_VERSION.tar.gz
+ADD https://github.com/wikkawik/WikkaWiki/archive/$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/$WIKKAWIKI_VERSION.tar.gz
 
 RUN mkdir -p /var/www/html/wikka \
     && cd /var/www/html/wikka \
