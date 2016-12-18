@@ -14,7 +14,13 @@ WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written
 When you run this docker with the basic minimum options:
 
 ~~~~bash
-docker run -d -p 80:80 oems/wikkawiki
+docker run -d -p 80:80 oems/wikkawiki:latest
+~~~~
+
+or for the release candidate:
+
+~~~~bash
+docker run -d -p 80:80 oems/wikkawiki:1.4.0-pre
 ~~~~
 
 - Run out of the box, to install WikkaWikki page.
@@ -27,12 +33,12 @@ The default database:
 wikka
 ~~~~
 
-default user:
+default database user:
 ~~~~text
 wikka
 ~~~~
 
-default password:
+default database password:
 ~~~~text
 wikka-password
 ~~~~
