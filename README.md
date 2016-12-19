@@ -4,7 +4,7 @@
 -	[`1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre/Dockerfile)
 
 # WikkaWiki docker container
-![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikka_logo.jpg)
+![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikkawikiWizzard.png)
 
 WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MySQL to store pages.
 [http://wikkawiki.org/HomePage](http://wikkawiki.org/HomePage)
@@ -62,20 +62,6 @@ The internal database use MySql 5.5, using your own database (make backup of you
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkawiki
 ```
 
-### Using your own database and your own configuration file.
-
-You can use your own configuration options.
-
-```bash
-docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka/wikka.config.php oems/wikkawiki
-```
-
-If you use a external database you dont need the mysql volume.
-
-```bash
-docker run -d -p 80:80 -v $PWD/wikka.config.php:/var/www/html/wikka.config.php oems/wikkawiki
-```
-
 #### How to get de default an clean database from this docker.
 
 You can to extract the default database if you want to use this image into some docker-compose for example:
@@ -96,6 +82,20 @@ services:
      - $PWD/mysql_org:/var/lib/mysql
 ```
 
+### Using your own database and your own configuration file.
+
+You can use your own configuration options.
+
+```bash
+docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka/wikka.config.php oems/wikkawiki
+```
+
+If you use a external database you dont need the mysql volume.
+
+```bash
+docker run -d -p 80:80 -v $PWD/wikka.config.php:/var/www/html/wikka.config.php oems/wikkawiki
+```
+
 ### Using your own uploads and your plugins also:
 
 ```bash
@@ -112,9 +112,18 @@ cd wikkawiki
 docker build -t "wikkawiki" .
 ```
 
+## FAQs and TODOs
+
+- This is ready for production:
+
+> R: For now, is not, becose this DockerFile was build thinking to help to the developers only.
+
+- [ ] TODO: Add some links to docs and tutorials to the Readme.
+- [ ] TODO: Add some setup pictures to the Readme.
+
 ## History
 
-- 161118: Adding tags,
+- 161118: Adding tags, added a new picture, 1.4.0 pre tag added, upgrading to ADD Dockerfile.
 - 160707: WikkaWiki now uses /wikka not the root of apache, but works out of the box.
 - 160705: Basic Initial Version.
 
