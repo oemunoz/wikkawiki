@@ -11,6 +11,8 @@ WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written
 
 ## To run the image:
 
+This is a resumed HowTo, for a long description follow the link to the [WikkaWiki](http://wikkawiki.org/Wikka-Docker).
+
 ### To run the default image (new Install):
 When you run this docker with the basic minimum options:
 
@@ -21,7 +23,7 @@ docker run -d -p 80:80 oems/wikkawiki:latest
 - Run out of the box, to install WikkaWikki page.
 - Run the latest Version of WikkaWiki (1.3.7), from the website tar.gz.
 - Run with PHP 5 (Developer tested).
-- A new WikkaWiki database over MySql 5.5 (tested), with the next DB/user/password options.
+- A new WikkaWiki database over MySql 5.5 (tested), with the next DB/user/password options. (mysql requiere at least 1G of RAM)
 
 
 or for the pre-release candidate:
@@ -118,6 +120,7 @@ docker build -t "wikkawiki" .
 
 > R: For now, is not, becose this DockerFile was build thinking to help to the developers only.
 
+- [ ] TODO: Fix some distortion on the logo image.
 - [ ] TODO: Add some links to docs and tutorials to the Readme.
 - [ ] TODO: Add some setup pictures to the Readme.
 
