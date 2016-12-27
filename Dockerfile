@@ -7,7 +7,7 @@ RUN apt-get update && \
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENV WIKKAWIKI_VERSION "1.4.0-pre"
-ENV MD5_CHECKSUM b2348ab73f2f486af1374d2fa1f7393c
+ENV MD5_CHECKSUM 5e608d9020054852801f2b695294fbd3
 
 ADD https://github.com/wikkawik/WikkaWiki/archive/$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/$WIKKAWIKI_VERSION.tar.gz
 
