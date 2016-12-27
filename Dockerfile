@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER OEMS <oscaremu@gmaiil.com>
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y curl supervisor git php7.0 php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2 mysql-server
+    DEBIAN_FRONTEND=noninteractive apt-get install -y curl supervisor git php7.0 php7.0-sqlite php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2 mysql-server
 
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -13,7 +13,7 @@ ADD https://github.com/wikkawik/WikkaWiki/archive/$WIKKAWIKI_VERSION.tar.gz /var
 
 RUN mkdir -p /var/www/html/wikka \
     && cd /var/www/html/wikka \
-    && echo "$MD5_CHECKSUM  $WIKKAWIKI_VERSION.tar.gz" | md5sum -c - \
+    && echo "$MD5_CHECKSUM $WIKKAWIKI_VERSION.tar.gz" | md5sum -c - \
     && tar xzf "$WIKKAWIKI_VERSION.tar.gz" --strip 1 \
     && rm "$WIKKAWIKI_VERSION.tar.gz"
 
