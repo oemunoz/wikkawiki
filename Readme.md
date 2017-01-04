@@ -23,8 +23,7 @@ docker run -d -p 80:80 oems/wikkawiki:latest
 - Run out of the box, to install WikkaWikki page.
 - Run the latest Version of WikkaWiki (1.3.7), from the website tar.gz.
 - Run with PHP 5 (Developer tested).
-- A new WikkaWiki database over MySql 5.5 (tested), with the next DB/user/password options. (mysql requiere at least 1G of RAM)
-
+- A new WikkaWiki database over MySql 5.5 (tested), with the next DB/user/password options. (mysql requiere at least a Giga of RAM)
 
 or for the pre-release candidate:
 
@@ -36,6 +35,7 @@ docker run -d -p 80:80 oems/wikkawiki:1.4.0-pre
 - Run the latest Version of WikkaWiki (1.4.0), from the github tar.gz.
 - Run with PHP 7.0.8 (Developer testing).
 - A new WikkaWiki database over MySql 5.7.16 (testing), with the next DB/user/password options.
+- Support for SqLite database, with configuration option from the installer.
 
 The default database:
 ```text
@@ -58,7 +58,7 @@ With this default option, you run the database into the container, then **if you
 
 ### Using your own database files
 
-The internal database use MySql 5.5, using your own database (make backup of your original database before to load this docker):
+The internal database use MySql 5.5 for WikkaWiki versions < 1.4.0 and MySql 5.7 for WikkaWiki >= 1.4.0, using your own database (make backup of your original database before to load this docker):
 
 ```bash
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkawiki
