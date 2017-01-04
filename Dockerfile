@@ -5,15 +5,14 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y curl supervisor git php7.0 php7.0-sqlite php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2 mysql-server
 
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# Removed MD5sum for Develop. 
 
 ENV WIKKAWIKI_VERSION "1.4.0-pre"
-ENV MD5_CHECKSUM c743c9dcae50d89cd1b2a6c493690b97
 
 ADD https://github.com/wikkawik/WikkaWiki/archive/$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/$WIKKAWIKI_VERSION.tar.gz
 
 RUN mkdir -p /var/www/html/wikka \
     && cd /var/www/html/wikka \
-    && echo "$MD5_CHECKSUM $WIKKAWIKI_VERSION.tar.gz" | md5sum -c - \
     && tar xzf "$WIKKAWIKI_VERSION.tar.gz" --strip 1 \
     && rm "$WIKKAWIKI_VERSION.tar.gz"
 
