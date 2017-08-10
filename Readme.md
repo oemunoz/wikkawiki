@@ -112,11 +112,26 @@ wikka-password
 For example docker-compose:
 
 ```yaml
+version: '2'
+
 services:
-  db:
+  mariadb:
    image: mariadb
+   hostname: mariadb
+   environment:
+    - MYSQL_ROOT_PASSWORD=root-password
+    - MYSQL_DATABASE=wikka
+    - MYSQL_USER=wikka
+    - MYSQL_PASSWORD=wikka-password
    volumes:
-     - $PWD/mysql_org:/var/lib/mysql
+     - $PWD/mysql:/var/lib/mysql
+
+  wiki:
+   image: oems/wikkawiki:1.4.0-pre_lite
+   links:
+     - mariadb
+   ports:
+     - '80:80'
 ```
 
 ### Using your own database and your own configuration file.
