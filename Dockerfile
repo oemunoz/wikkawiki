@@ -1,15 +1,15 @@
 FROM ubuntu:16.04
 MAINTAINER OEMS <oscaremu@gmail.com>
 
-RUN apt-get update && \
-  apt-get install squid-deb-proxy-client -y && \
-  echo 'Acquire::http::Proxy "http://192.168.122.1:8000/";' > /etc/apt/apt.conf.d/30autoproxy
+#RUN apt-get update && \
+#  apt-get install squid-deb-proxy-client -y && \
+#  echo 'Acquire::http::Proxy "http://192.168.122.1:8000/";' > /etc/apt/apt.conf.d/30autoproxy
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y curl supervisor git php7.0 php7.0-sqlite php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2 mysql-server
+    apt-get install -y curl supervisor git php7.0 php7.0-sqlite php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2
 
-#RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-# Removed MD5sum for Develop.
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server
 
 ENV WIKKAWIKI_VERSION "1.4.0-pre"
 
@@ -30,10 +30,7 @@ RUN chown -R www-data:www-data /var/www \
     && cp /setup/wikka.conf /etc/apache2/sites-available/wikka.conf \
     && ln -s /etc/apache2/sites-available/wikka.conf /etc/apache2/sites-enabled/
 
-#RUN service mysql start && \
-#    sleep 10s && \
-#    mysql -u root < /setup/mysql_wikkawiki.sql && \
-#    service mysql stop && sleep 10 && \
-#    tar -cvf /mysql_basic.tar /var/lib/mysql
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    # Removed MD5sum for Develop.
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
