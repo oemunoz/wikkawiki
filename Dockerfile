@@ -30,10 +30,10 @@ RUN chown -R www-data:www-data /var/www \
     && cp /setup/wikka.conf /etc/apache2/sites-available/wikka.conf \
     && ln -s /etc/apache2/sites-available/wikka.conf /etc/apache2/sites-enabled/
 
-RUN service mysql start && \
-    sleep 10s && \
-    mysql -u root < /setup/mysql_wikkawiki.sql && \
-    service mysql stop && sleep 10 && \
-    tar -cvf /mysql_basic.tar /var/lib/mysql
+#RUN service mysql start && \
+#    sleep 10s && \
+#    mysql -u root < /setup/mysql_wikkawiki.sql && \
+#    service mysql stop && sleep 10 && \
+#    tar -cvf /mysql_basic.tar /var/lib/mysql
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
