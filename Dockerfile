@@ -1,4 +1,4 @@
-FROM php:7.0-apache
+FROM php:apache
 MAINTAINER OEMS <oscaremu@gmail.com>
 
 ENV WIKKAWIKI_VERSION "1.4.0-pre"
