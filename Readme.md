@@ -104,12 +104,13 @@ docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkawiki
 Now in your work directory, is a directory named **mysql_org/ **, you can use this database files on your owns instances of wikkawiki.
 
 ![Install process.](https://github.com/oemunoz/wikkawiki/raw/master/images/wizzard_dockercomposer.png)
+
 **Default password**:
 ```text
 wikka-password
 ```
 
-For example docker-compose:
+For example docker-compose.yml:
 
 ```yaml
 version: '2'
@@ -132,6 +133,10 @@ services:
      - mariadb
    ports:
      - '80:80'
+```
+and the run it:
+```bash
+docker-compose up -d
 ```
 
 ### Using your own database and your own configuration file.
