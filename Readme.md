@@ -10,7 +10,7 @@
 WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MariaDB/MySQL/SQLite to store pages.
 [http://wikkawiki.org/HomePage](http://wikkawiki.org/HomePage)
 
-![MariaDB.](https://github.com/oemunoz/wikkawiki/raw/master/images/mariadb.png)![SQLite.](https://github.com/oemunoz/wikkawiki/raw/master/images/sqlite.jpg)![PHP.](https://github.com/oemunoz/wikkawiki/raw/master/images/php.png)
+![MariaDB.](https://github.com/oemunoz/wikkawiki/raw/master/images/mariadb.png)![SQLite.](https://github.com/oemunoz/wikkawiki/raw/master/images/sqlite.jpg)![Mysql.](https://github.com/oemunoz/wikkawiki/raw/master/images/MySQL.png)![PHP.](https://github.com/oemunoz/wikkawiki/raw/master/images/php.png)
 
 ## Image description:
 
@@ -30,7 +30,7 @@ docker run -d -p 80:80 oems/wikkawiki:latest
 ```
 
 - Run out of the box, to install WikkaWikki page.
-- Run the latest Stable Version of WikkaWiki (1.3.7), from the tar.gz on the GitHub Official site .
+- Run the latest Stable Version of WikkaWiki (1.3.7), from the tar.gz on the GitHub Official site.
 - Run with PHP 5.5 (Developer tested).
 - A new WikkaWiki database over MariaDB 5.5.57, with the next DB/user/password options.
 
@@ -48,7 +48,7 @@ docker run -d -p 80:80 oems/wikkawiki:1.4.0-pre
 ```
 
 - Run out of the box, to install WikkaWikki page.
-- Run the latest Version of WikkaWiki (1.4.0), from the github tar.gz.
+- Run the latest Version of WikkaWiki (1.4.0), from the github repository.
 - Run with PHP 7.0 (Developer testing).
 - A new WikkaWiki database over MariaDB 10.0.31 (testing), with the next DB/user/password options.
 - Support for SqLite database, with configuration option from the installer.
@@ -68,8 +68,8 @@ docker run -d -p 80:80 oems/wikkawiki:1.4.0-pre_lite
 ```
 
 - Run out of the box, to install WikkaWikki page.
-- Run the latest Version of WikkaWiki (1.4.0), from the github tar.gz.
-- Run with PHP 7.0 (Developer testing).
+- Run the latest Version of WikkaWiki (1.4.0), from the github repository.
+- Run with PHP 7.1 (Developer testing).
 - Support for MariaDB/MySql but not internal engine.
 - Support for SqLite database, with configuration option from the installer.
 
@@ -100,8 +100,14 @@ The internal database use MariaDB 5.5.57 for WikkaWiki versions < 1.4.0 and Mari
 docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkawiki
 ```
 
-#### Using docker-composer with this docker.
+#### Using docker-compose with this docker.
 Now in your work directory, is a directory named **mysql_org/ **, you can use this database files on your owns instances of wikkawiki.
+
+![Install process.](https://github.com/oemunoz/wikkawiki/raw/master/images/wizzard_dockercomposer.png)
+**Default password**:
+```text
+wikka-password
+```
 
 For example docker-compose:
 
