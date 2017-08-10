@@ -2,6 +2,7 @@
 
 -	[`1.3.7` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
 -	[`1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre/Dockerfile)
+-	[`1.4.0-pre_lite` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre_lite/Dockerfile)
 
 # WikkaWiki docker container
 ![WikkaWiki.](https://github.com/oemunoz/wikkawiki/raw/master/images/wikkawikiWizzard.png)
@@ -15,9 +16,11 @@ WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written
 
 This is a resumed HowTo, for a long description follow the link to the [WikkaWiki](http://wikkawiki.org/Wikka-Docker).
 
-### The Stable Version:
+![Flavours.](https://github.com/oemunoz/wikkawiki/raw/master/images/flavours.png)
 
-#### MariaDB on the same Docker with supervisord.
+### The Stable (latest) Version:
+
+#### MariaDB on the same Docker with Supervisord.
 [`1.3.7` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile), **stable-release**.
 
 When you run this docker with the basic minimum options:
@@ -35,7 +38,7 @@ docker run -d -p 80:80 oems/wikkawiki:latest
 
 ### The Beta Version:
 
-#### MariaDB/SQLite options on the same Docker with supervisord.
+#### MariaDB/SQLite options on the same Docker with Supervisord.
 [`1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre/Dockerfile), **pre-release candidate**.
 
 or for the pre-release candidate:
@@ -52,7 +55,27 @@ docker run -d -p 80:80 oems/wikkawiki:1.4.0-pre
 
 ----
 
-### Running Installer for first time (All versions).
+### The Beta Lite Version:
+No internal MariaDB/MySql Database Engine
+
+#### MariaDB/SQLite options for external MariaDB/MySql or internal SqLite.
+[`1.4.0-pre_lite` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre_lite/Dockerfile), **pre-release candidate**.
+
+or for the pre-release candidate:
+
+```bash
+docker run -d -p 80:80 oems/wikkawiki:1.4.0-pre_lite
+```
+
+- Run out of the box, to install WikkaWikki page.
+- Run the latest Version of WikkaWiki (1.4.0), from the github tar.gz.
+- Run with PHP 7.0 (Developer testing).
+- Support for MariaDB/MySql but not internal engine.
+- Support for SqLite database, with configuration option from the installer.
+
+----
+
+### Running Installer for first time (Internal Database Engine).
 
 Connect with the web server on the 80 tcp port of the docker server, and use the default password (on any case remember to change this password):
 
@@ -126,6 +149,7 @@ docker build -t "wikkawiki" .
 
 ## History
 
+- 170810: New, repository WikkaWiki Lite instance.
 - 170810: Now, the default database is MariaDB.
 - 170810: New directory for scripts and config (/setup)
 - 170810: New directory for supervisord, and separated daemons.
