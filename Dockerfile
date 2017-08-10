@@ -1,10 +1,16 @@
 FROM ubuntu:14.04
-MAINTAINER OEMS <oscaremu@gmaiil.com>
+MAINTAINER OEMS <oscaremu@gmail.com>
 
 RUN apt-get update && \
-    apt-get install -y curl supervisor git php5 php5-mysql php5-gd libapache2-mod-php5 php5-curl libssh2-php apache2 mysql-server
+  apt-get install squid-deb-proxy-client -y && \
+  echo 'Acquire::http::Proxy "http://192.168.122.1:8000/";' > /etc/apt/apt.conf.d/30autoproxy
 
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && \
+    apt-get install -y curl supervisor git php5 php5-mysql php5-gd libapache2-mod-php5 php5-curl libssh2-php apache2
+
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server && \
+    touch /var/lib/mysql/run_mysql
 
 ENV WIKKAWIKI_VERSION 1.3.7
 ENV MD5_CHECKSUM 9e3ae79d96bf0581c01e1dc706698576
@@ -17,20 +23,16 @@ RUN mkdir -p /var/www/html/wikka \
     && tar xzf "$WIKKAWIKI_VERSION.tar.gz" --strip 1 \
     && rm "$WIKKAWIKI_VERSION.tar.gz"
 
-ADD wikka.conf /etc/apache2/sites-available/wikka.conf
-ADD mysql_wikkawiki.sql /root/mysql_wikkawiki.sql
-ADD supervisord.conf /etc/supervisord.conf
-ADD fix_perm.sh /root/fix_perm.sh
+ADD supervisord/supervisord.conf /etc/supervisord.conf
+ADD supervisord/ /etc/supervisord/
+ADD setup/ /setup/
 
 RUN chown -R www-data:www-data /var/www \
     && a2enmod rewrite \
     && rm /etc/apache2/sites-enabled/000-default.conf \
+    && cp /setup/wikka.conf /etc/apache2/sites-available/wikka.conf \
     && ln -s /etc/apache2/sites-available/wikka.conf /etc/apache2/sites-enabled/
 
-RUN service mysql start & \
-    sleep 10s  \
-    && mysql -u root < /root/mysql_wikkawiki.sql \
-    && service mysql start && sleep 10 \
-    && tar -cvf /mysql_basic.tar /var/lib/mysql
+RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
