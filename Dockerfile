@@ -9,7 +9,8 @@ RUN apt-get update && \
     apt-get install -y curl supervisor git php7.0 php7.0-sqlite php7.0-mysql php7.0-gd php7.0-mbstring php7.0-curl libapache2-mod-php7.0 php-ssh2 apache2
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server
+    DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server && \
+    touch /var/lib/mysql/run_mysql
 
 ENV WIKKAWIKI_VERSION "1.4.0-pre"
 
