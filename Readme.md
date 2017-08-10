@@ -9,8 +9,7 @@
 WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MariaDB/MySQL/SQLite to store pages.
 [http://wikkawiki.org/HomePage](http://wikkawiki.org/HomePage)
 
-![MariaDB.](https://github.com/oemunoz/wikkawiki/raw/master/images/mariadb.png)
-![SQLite.](https://github.com/oemunoz/wikkawiki/raw/master/images/sqlite.jpg)
+![MariaDB.](https://github.com/oemunoz/wikkawiki/raw/master/images/mariadb.png)![SQLite.](https://github.com/oemunoz/wikkawiki/raw/master/images/sqlite.jpg)![PHP.](https://github.com/oemunoz/wikkawiki/raw/master/images/php.png)
 
 ## Image description:
 
@@ -18,7 +17,7 @@ This is a resumed HowTo, for a long description follow the link to the [WikkaWik
 
 ### The Stable Version:
 
-#### MariaDB, SQLite options on the same Docker with supervisord.
+#### MariaDB on the same Docker with supervisord.
 [`1.3.7` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile), **stable-release**.
 
 When you run this docker with the basic minimum options:
@@ -29,12 +28,14 @@ docker run -d -p 80:80 oems/wikkawiki:latest
 
 - Run out of the box, to install WikkaWikki page.
 - Run the latest Stable Version of WikkaWiki (1.3.7), from the tar.gz on the GitHub Official site .
-- Run with PHP 5 (Developer tested).
-- A new WikkaWiki database over MariaDB 5.5.57, with the next DB/user/password options. (mysql requiere at least a Giga of RAM)
+- Run with PHP 5.5 (Developer tested).
+- A new WikkaWiki database over MariaDB 5.5.57, with the next DB/user/password options.
+
+----
 
 ### The Beta Version:
 
-#### MariaDB, SQLite options on the same Docker with supervisord.
+#### MariaDB/SQLite options on the same Docker with supervisord.
 [`1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre/Dockerfile), **pre-release candidate**.
 
 or for the pre-release candidate:
@@ -45,20 +46,24 @@ docker run -d -p 80:80 oems/wikkawiki:1.4.0-pre
 
 - Run out of the box, to install WikkaWikki page.
 - Run the latest Version of WikkaWiki (1.4.0), from the github tar.gz.
-- Run with PHP 7.0.8 (Developer testing).
-- A new WikkaWiki database over MySql 5.7.16 (testing), with the next DB/user/password options.
+- Run with PHP 7.0 (Developer testing).
+- A new WikkaWiki database over MariaDB 10.0.31 (testing), with the next DB/user/password options.
 - Support for SqLite database, with configuration option from the installer.
+
+----
 
 ### Running Installer for first time (All versions).
 
 Connect with the web server on the 80 tcp port of the docker server, and use the default password (on any case remember to change this password):
 
+![Install process.](https://github.com/oemunoz/wikkawiki/raw/master/images/database_user.png)
+
+**Default password**:
 ```text
 wikka-password
 ```
-![Install process.](https://github.com/oemunoz/wikkawiki/raw/master/images/database_user.png)
 
-Follow the instructive for more detail on the install process:
+Also, you can follow the instructive for more detail on the install process:
 
 [http://docs.wikkawiki.org/WikkaInstallation](http://docs.wikkawiki.org/WikkaInstallation)
 
