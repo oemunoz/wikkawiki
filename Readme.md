@@ -10,8 +10,6 @@
 WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written in PHP, which uses MariaDB/MySQL/SQLite to store pages.
 [http://wikkawiki.org/HomePage](http://wikkawiki.org/HomePage)
 
-![MariaDB.](https://github.com/oemunoz/wikkawiki/raw/master/images/mariadb.png)![SQLite.](https://github.com/oemunoz/wikkawiki/raw/master/images/sqlite.jpg)![Mysql.](https://github.com/oemunoz/wikkawiki/raw/master/images/MySQL.png)![PHP.](https://github.com/oemunoz/wikkawiki/raw/master/images/php.png)
-
 ## Image description:
 
 This is a resumed HowTo, for a long description follow the link to the [WikkaWiki](http://wikkawiki.org/Wikka-Docker).
@@ -191,3 +189,5 @@ All WikkaWiki develops.
 ## License
 
 GNU General Public License
+
+![MariaDB.](https://github.com/oemunoz/wikkawiki/raw/master/images/mariadb.png)![SQLite.](https://github.com/oemunoz/wikkawiki/raw/master/images/sqlite.jpg)![Mysql.](https://github.com/oemunoz/wikkawiki/raw/master/images/MySQL.png)![PHP.](https://github.com/oemunoz/wikkawiki/raw/master/images/php.png)
