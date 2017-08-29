@@ -1,9 +1,5 @@
-FROM ubuntu:14.04
+FROM arm32v7/ubuntu:14.04
 MAINTAINER OEMS <oscaremu@gmail.com>
-
-#RUN apt-get update && \
-#  apt-get install squid-deb-proxy-client -y && \
-#  echo 'Acquire::http::Proxy "http://192.168.122.1:8000/";' > /etc/apt/apt.conf.d/30autoproxy
 
 RUN apt-get update && \
     apt-get install -y curl supervisor git php5 php5-mysql php5-gd libapache2-mod-php5 php5-curl libssh2-php apache2
