@@ -1,7 +1,8 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`1.4.0` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
--       [`1.3.7_php5_mariadb` , `1.3.7` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
+-	[`1.4.0` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0/Dockerfile)
+-       [`1.3.7_php5_mariadb` , `1.3.7` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.3.7_php5_mariadb/Dockerfile)
+-       [`dev` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
 -       [`1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre/Dockerfile)
 -       [`1.4.0-pre_lite` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre_lite/Dockerfile)
 -       [`1.4.0-pre_arm32v7_lite` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre_arm32v7_lite/Dockerfile)
@@ -17,13 +18,13 @@ WikkaWiki is a flexible, standards-compliant and lightweight wiki engine written
 
 This is a resumed HowTo, for a long description follow the link to the [WikkaWiki](http://wikkawiki.org/Wikka-Docker).
 
-![Flavours.](https://github.com/oemunoz/wikkawiki/raw/master/images/flavours.png)
+From the 1.4.0 stable version this docker dont use supervisord, but you can use other alternatives like docker-compose, check the example below.
 
 ### The Stable (latest) Version:
 No internal MariaDB/MySql Database Engine
 
 #### MariaDB/SQLite options for external MariaDB/MySql or internal SqLite.
-[`1.4.0`, `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile), **stable-release**.
+[`1.4.0`, `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0/Dockerfile), **stable-release**.
 
 ```bash
 docker run -d -p 80:80 oems/wikkawiki
@@ -34,6 +35,7 @@ docker run -d -p 80:80 oems/wikkawiki
 - Run with PHP 7 (Developer testing).
 - Support for MariaDB/MySql but not internal engine.
 - Support for SqLite database, with configuration option from the installer.
+
 ----
 
 #### MariaDB on the same Docker with Supervisord.
@@ -42,7 +44,7 @@ docker run -d -p 80:80 oems/wikkawiki
 When you run this docker with the basic minimum options:
 
 ```bash
-docker run -d -p 80:80 oems/wikkawiki:latest
+docker run -d -p 80:80 oems/wikkawiki:1.3.7_php5_mariadb
 ```
 
 - Run out of the box, to install WikkaWikki page.
@@ -50,9 +52,17 @@ docker run -d -p 80:80 oems/wikkawiki:latest
 - Run with PHP 5.5 (Developer tested).
 - A new WikkaWiki database over MariaDB 5.5.57, with the next DB/user/password options.
 
-### Running Installer for first time (Internal Database Engine).
+----
 
-Connect with the web server on the 80 tcp port of the docker server, and use the default password (on any case remember to change this password):
+### Running Installer for first time.
+
+Connect with the web server on the 80 tcp port of the docker server, you can use the SQLite option;
+
+![Install process.](https://github.com/oemunoz/wikkawiki/raw/master/images/sqlite_select.png)
+
+> Note: If you select the SQLite option ignore other database fields.
+
+If you select mysql option you must to use the default password (on any case remember to change this password):
 
 ![Install process.](https://github.com/oemunoz/wikkawiki/raw/master/images/database_user.png)
 
@@ -66,14 +76,6 @@ Also, you can follow the instructive for more detail on the install process:
 [http://docs.wikkawiki.org/WikkaInstallation](http://docs.wikkawiki.org/WikkaInstallation)
 
 With this default option, you run the database into the container, then **if you delete your container you delete your database also**, remember to make backup.
-
-### Using your own database files
-
-The internal database use MariaDB 5.5.57 for WikkaWiki versions < 1.4.0 and MariaDB 10.0.31 for WikkaWiki >= 1.4.0, using your own database (**make backup** of your original database before to load this docker):
-
-```bash
-docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql oems/wikkawiki
-```
 
 #### Using docker-compose with this docker.
 Now in your work directory, is a directory named **mysql_org/ **, you can use this database files on your owns instances of wikkawiki.
@@ -114,14 +116,6 @@ and the run it:
 docker-compose up -d
 ```
 
-### Using your own database and your own configuration file.
-
-You can use your own configuration options.
-
-```bash
-docker run -d -p 80:80 -v $PWD/mysql:/var/lib/mysql -v $PWD/wikka.config.php:/var/www/html/wikka/wikka.config.php oems/wikkawiki
-```
-
 ### Using your own uploads and your plugins also:
 
 ```bash
@@ -150,6 +144,8 @@ docker build -t "wikkawiki" .
 
 ## History
 
+- 180519: Upgrade to 1.4.0 release.
+- 180519: Removed embemed databases.
 - 170810: New, repository WikkaWiki Lite instance.
 - 170810: Now, the default database is MariaDB.
 - 170810: New directory for scripts and config (/setup)
