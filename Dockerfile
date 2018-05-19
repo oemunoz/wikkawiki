@@ -1,7 +1,7 @@
 FROM php:apache
 MAINTAINER OEMS <oscaremu@gmail.com>
 
-ENV WIKKAWIKI_VERSION "1.4.0-pre"
+ENV WIKKAWIKI_VERSION "1.4.0"
 
 RUN docker-php-ext-install pdo pdo_mysql
 
