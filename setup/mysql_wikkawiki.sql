@@ -1,3 +1,0 @@
-CREATE DATABASE IF NOT EXISTS wikka;
-GRANT ALL PRIVILEGES ON wikka.* TO 'wikka'@'localhost' IDENTIFIED BY 'wikka-password';
-FLUSH PRIVILEGES;
