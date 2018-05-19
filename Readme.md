@@ -1,7 +1,7 @@
 # Supported tags and respective `Dockerfile` links
 
--	[`1.4.0` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0/Dockerfile)
--       [`1.3.7_php5_mariadb` , `1.3.7` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.3.7_php5_mariadb/Dockerfile)
+-       [`1.4.0` , `latest` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0/Dockerfile)
+-       [`1.3.7-php5-mariadb` , `1.3.7` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.3.7_php5_mariadb/Dockerfile)
 -       [`dev` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/master/Dockerfile)
 -       [`1.4.0-pre` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre/Dockerfile)
 -       [`1.4.0-pre_lite` (*Dockerfile*)](https://github.com/oemunoz/wikkawiki/blob/1.4.0-pre_lite/Dockerfile)
