@@ -105,7 +105,7 @@ services:
      - $PWD/mysql:/var/lib/mysql
 
   wiki:
-   image: oems/wikkawiki:1.4.0-pre_lite
+   image: oems/wikkawiki:latest
    links:
      - mariadb
    ports:
