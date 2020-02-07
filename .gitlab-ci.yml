@@ -12,7 +12,7 @@ stages:
 build_image:
   stage: build
   script:
-    - docker build --rm -t "$CI_REGISTRY_IMAGE" . --build-arg $HTTP_PROXY --build-arg $HTTPS_PROXY
+    - docker build --rm -t "$CI_REGISTRY_IMAGE" . --build-arg "$HTTP_PROXY $HTTPS_PROXY"
 
 push_image:
   stage: push
