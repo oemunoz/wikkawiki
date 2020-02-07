@@ -1,13 +1,13 @@
 FROM php:apache
 MAINTAINER OEMS <oscaremu@gmail.com>
 
-ENV WIKKAWIKI_VERSION "master"
+ENV WIKKAWIKI_VERSION "1.4.1"
 
 RUN docker-php-ext-install pdo pdo_mysql
 
 # Interestingly, the URL download and archive unpacking features cannot be used together.
 # Any archives copied via URL will NOT be automatically unpacked.
-ADD https://github.com/wikkawik/WikkaWiki/archive/$WIKKAWIKI_VERSION.tar.gz /var/www/html/wikka/$WIKKAWIKI_VERSION.tar.gz
+ADD http://wikkawiki.org/downloads/Wikka-1.4.1.tar.gz /var/www/html/wikka/$WIKKAWIKI_VERSION.tar.gz
 
 RUN mkdir -p /var/www/html/wikka \
     && cd /var/www/html/wikka \
