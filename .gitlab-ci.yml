@@ -12,13 +12,13 @@ stages:
 build_image:
   stage: build
   script:
-    - docker build --rm -t "$CI_REGISTRY_IMAGE" . --build-arg "$HTTP_PROXY $HTTPS_PROXY"
+    - docker build --rm -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" . --build-arg "$HTTP_PROXY $HTTPS_PROXY"
 
 push_image:
   stage: push
   script:
-    - docker tag "$CI_REGISTRY_IMAGE" $REG_TARGET:5000/"$CI_REGISTRY_IMAGE"
+    - docker tag "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME" $REG_TARGET:5000/"$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
     - docker login --username $DOCKER_USER --password $DOCKER_PASSWORD $REG_TARGET:5000
-    - docker push $REG_TARGET:5000/"$CI_REGISTRY_IMAGE"
+    - docker push $REG_TARGET:5000/"$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_NAME"
 #    - docker run my-docker-image /script/to/run/tests
 
